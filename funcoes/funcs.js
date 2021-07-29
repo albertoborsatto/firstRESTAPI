@@ -18,12 +18,16 @@ const procuraNum = (obj, query) => {
 
 const oqProcurar = (obj, query) => {
     const {nome, email, pais, cidade, idade} = query
-    if(nome) return procuraString(obj, nome, 'nome')
-    else if(email) return procuraString(obj, email, 'email')
-    else if(pais) return procuraString(obj, pais, 'pais')
-    else if(cidade) return procuraString(obj, cidade, 'cidade')
-    else if(idade) return procuraNum(obj, idade)
-    else return obj
+    let final = obj
+    
+    if(nome) final = procuraString(obj, nome, 'nome')
+    else if(email) final = procuraString(obj, email, 'email')
+    else if(pais) final = procuraString(obj, pais, 'pais')
+    else if(cidade) final = procuraString(obj, cidade, 'cidade')
+    else if(idade) final = procuraNum(obj, idade)
+    
+    if(final) return final
+    else return false
 }
 
 module.exports = {oqProcurar}

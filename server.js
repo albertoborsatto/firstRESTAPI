@@ -13,6 +13,9 @@ mongoose.connect('mongodb://localhost/pessoas', {useNewUrlParser: true, useUnifi
 
 app.use(express.json())
 app.use('/api', router)
+app.use((err, req, res, next) => {
+  res.status(422).json({success: false, erro: err.message})
+})
 
 //colocando o servidor de pé...
 app.listen(5000, () => {

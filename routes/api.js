@@ -11,7 +11,8 @@ router.get('/pessoas', async(req, res, next) => {
     try {
         let todos = await pessoa.find({})
         todos = oqProcurar(todos, query)
-        res.json({type: 'GET', success: true, data: todos})
+        if(todos) res.json({type: 'GET', success: true, data: todos})
+        else res.status(404).json({type: 'GET', success: false, erro: 'Nada encontrado :('})
     } catch(err) {next(err)}
 })
 
