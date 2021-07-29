@@ -1,22 +1,17 @@
 const express = require('express')
 const pessoa = require('../models/pessoas')
+const {oqProcurar} = require('../funcoes/funcs')
 
 const router = express.Router()
 
-//pegar todas as pessoas do banco de dados
-router.get('/pessoas', async(req, res, next) => {
-    try {
-        const pessoas = await pessoa.find({})
-        res.json({type: 'GET', success: true, data: pessoas})
-    } catch(err) {next(err)}
-})
 
-//retorna uma pessoa específica do banco de dados
-router.get('/pessoas/:id', async(req, res, next) => {
-    const {id} = req.params
+//retorna todas ou uma pessoa específica do banco de dados
+router.get('/pessoas', async(req, res, next) => {
+    const query = req.query
     try {
-        const umaPessoa = await pessoa.findById(id)
-        res.json({type: 'GET', success: true, data: umaPessoa})
+        let todos = await pessoa.find({})
+        todos = oqProcurar(todos, query)
+        res.json({type: 'GET', success: true, data: todos})
     } catch(err) {next(err)}
 })
 
