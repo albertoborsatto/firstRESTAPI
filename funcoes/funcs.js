@@ -1,5 +1,3 @@
-const { findByIdAndDelete } = require("../models/pessoas")
-
 const procuraString = (obj, query, param) => {
     return obj.find(pessoa => {
         if(pessoa[param].toLowerCase().startsWith(query)) {

@@ -4,9 +4,11 @@ const {oqProcurar} = require('../funcoes/funcs')
 
 const router = express.Router()
 
+//a página inicial envia um formulário html para receber dados
+router.get('/', (req, res, next) => res.render('index'))
 
-//retorna todas ou uma pessoa específica do banco de dados
-router.get('/pessoas', async(req, res, next) => {
+//retornar todas ou uma pessoa específica do banco de dados
+router.get('/api/pessoas', async(req, res, next) => {
     const query = req.query
     try {
         let todos = await pessoa.find({})
@@ -17,7 +19,7 @@ router.get('/pessoas', async(req, res, next) => {
 })
 
 //adicionar uma nova pessoa ao banco de dados
-router.post('/pessoas', async(req, res, next) => {
+router.post('/api/pessoas', async(req, res, next) => {
     const reqData = req.body
     try {
         const novaPessoa = await pessoa.create(reqData)
@@ -25,8 +27,9 @@ router.post('/pessoas', async(req, res, next) => {
     } catch(err) {next(err)}
 })
 
+
 //atualizar uma pessoa do banco de dados
-router.put('/pessoas/:id', async(req, res, next) => {
+router.put('/api/pessoas/:id', async(req, res, next) => {
     const reqData = req.body
     const {id} = req.params
     try {
@@ -36,7 +39,7 @@ router.put('/pessoas/:id', async(req, res, next) => {
 })
 
 //deletar uma pessoa do banco de dados
-router.delete('/pessoas/:id', async(req, res, next) => {
+router.delete('/api/pessoas/:id', async(req, res, next) => {
     const {id} = req.params
     try {
         const deletaPessoa = await pessoa.findByIdAndRemove({_id: id})
