@@ -1,0 +1,64 @@
+body {
+    font: normal 20pt Arial;
+    color: white;
+    background-color: mediumpurple;
+    align-items: center;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+}
+
+#container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 200px;
+}
+
+#header {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;
+    color: black;
+    border-radius: 5px;
+}
+
+#header h2 {
+    margin: 0;
+    font-size: 20pt;
+}
+
+input[type=text], input[type=email], input[type=number] {
+    width: 200px;
+    height: 26px;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.8s ease;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=number]:focus {
+    width: 50%;
+    border: 3px solid mediumpurple;
+}
+
+input[type=text]:hover, input[type=email]:hover, input[type=number]:hover {
+    border: 3px solid mediumpurple;
+}
+
+input[type=submit] {
+    width: 15%;
+    transition: 0.5s ease;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+}
+
+input[type=submit]:hover {
+    border: 3px solid mediumpurple;
+}
+
